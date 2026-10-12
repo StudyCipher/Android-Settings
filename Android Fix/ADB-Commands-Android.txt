@@ -1,1 +1,47 @@
+ADB commands:
 
+# Open list:
+adb devices
+
+# Make your ADB connection Root (If you are Root, you do not require "adb shell"):
+adb shell
+
+su
+
+# List all programs installed:
+adb shell pm list packages
+
+1) List 3rd party programs:
+adb shell pm list packages -3
+
+2) List system programs:
+adb shell pm list packages -s
+
+3) List related packages or dependencies:
+adb shell pm list packages -f
+
+# DNS
+# Encrypted DNS:
+Link: https://dns-over-https.org/en/guides/how-to-setup-doh-in-android/
+
+1) Enable Private or Encrypted DNS:
+adb shell settings put global private_dns_mode hostname
+
+2) Set up encrypted hostname DNS:
+You can use "clean.dnsforge.de, dns.google)
+adb shell settings put global private_dns_specifier clean.dnsforge.de
+
+3) Verify is encrypted and hostname are enable:
+adb shell settings get global private_dns_mode
+adb shell settings get global private_dns_specifier
+
+
+# Terminal test:
+adb shell nslookup www.google.com
+adb shell dig www.google.com
+adb shell ping 8.8.8.8
+
+# Terminal test (Need to be Root or run "adb shell"):
+nslookup www.google.com
+dig www.google.com
+ping 8.8.8.8
